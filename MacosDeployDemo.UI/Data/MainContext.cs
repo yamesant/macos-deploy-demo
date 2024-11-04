@@ -1,3 +1,5 @@
+using System;
+using System.IO;
 using MacosDeployDemo.UI.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,6 +16,12 @@ public class MainContext : DbContext
             return;
         }
         
-        optionsBuilder.UseSqlite($"Data Source=data.db");
+        string path = Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+            "HelloWorld",
+            "data.db");
+
+        Directory.CreateDirectory(Path.GetDirectoryName(path)!);
+        optionsBuilder.UseSqlite($"Data Source={path}");
     }
 }
