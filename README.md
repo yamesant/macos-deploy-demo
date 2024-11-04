@@ -1,0 +1,1 @@
+This is a demo of bundling a "Hello World"-like .NET 8 desktop application into a macOS app with an icon and a database.
