@@ -3,6 +3,7 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
+using MacosDeployDemo.UI.Data;
 using MacosDeployDemo.UI.ViewModels;
 using MacosDeployDemo.UI.Views;
 
@@ -17,6 +18,9 @@ public partial class App : Application
 
     public override void OnFrameworkInitializationCompleted()
     {
+        MainContext context = new();
+        context.Database.EnsureCreated();
+        
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             // Line below is needed to remove Avalonia data validation.
